@@ -6,7 +6,7 @@ Follow the naming conventions exactly as instructed. The backend code will be in
 Models
 ### College Model
 { name: { mandatory, unique, example iith}, fullName: {mandatory, example `Indian Institute of Technology, Hyderabad`}, logoLink: {mandatory}, isDeleted: {boolean, default: false} }
-Intern Model
+### Intern Model
 { name: {mandatory}, email: {mandatory, valid email, unique}, mobile: {mandatory, valid mobile number, unique}, collegeId: {ObjectId, ref to college model, isDeleted: {boolean, default: false}}
 ### POST /functionup/colleges
 Create a college - a document for each member of the group

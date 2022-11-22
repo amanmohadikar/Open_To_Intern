@@ -8,12 +8,6 @@ const isValidEmail = function (value) {
   if (emailRegex.test(value)) return true;
 };
 
-//============================idCharacterValid============================
-
-const isIdValid = function (value) {
-  return mongoose.Types.ObjectId.isValid(value); 
-};
-
 //==========================validation for string==================================
 
 const isValidString = function (value) {
@@ -25,7 +19,7 @@ const isValidString = function (value) {
 //==============================validation for name===============================
 
 const isValidName = function (name) {
-  if (/^[a-zA-Z ]+$/.test(name)) {
+  if (/^[a-zA-Z, ]+$/.test(name)) {
     return true;
   }
 };
@@ -48,4 +42,4 @@ const isValidImage = function (image) {
  
 //============================= module exports ==============================
 
-module.exports = { isValidEmail, isIdValid, isValidString,isValidName,isValidMobile,isValidImage}
+module.exports = { isValidEmail, isValidString,isValidName,isValidMobile,isValidImage}

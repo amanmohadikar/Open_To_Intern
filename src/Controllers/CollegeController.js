@@ -27,13 +27,10 @@ const createCollege =async function (req,res){
     }  
 }
 
-
-
 //================get api==============================================
 
-const getCollegeData =async function (req,res){
-
-    try{
+ const getCollegeData =async function (req,res){
+   try{
        let collegeName = req.query.collegeName
 //=============query is not given=====================
 
@@ -41,7 +38,7 @@ const getCollegeData =async function (req,res){
         
  //=============finding the valid college====================     
 
-        const findCollege= await collegeModel.findOne({name:collegeName,isDeleted:false})
+       const findCollege= await collegeModel.findOne({name:collegeName,isDeleted:false})
 
  //=================if college name is worng=====================   
 
@@ -52,7 +49,6 @@ const getCollegeData =async function (req,res){
 
         const interns  = await internModel.find({collegeId: collegeId,isDeleted: false}).select({name:1, email:1, mobile:1})
         if(interns.length==0)  return res.status(404).send({status:false,message:"No interns found for this College"})
-
         let obj={}
         const result = await collegeModel.findOne({name:collegeName, isDeleted:false})
         obj.name = result.name  
@@ -60,12 +56,16 @@ const getCollegeData =async function (req,res){
         obj.logoLink = result.logoLink
         obj.interns = interns
 
-        return res.status(200).send({status:true, data:obj,message:"get data successfully" })
+        return res.status(200).send({status:true, data:obj, message:"get data successfully" })
 
     }catch(error){
         return res.status(500).send({status:false,message:error.message})
     } 
 }
+
+
+
+
 
 
 module.exports.CreateCollege  = createCollege
